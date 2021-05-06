@@ -17,7 +17,7 @@ def regist_phone():
 
 #削除する
 def delete_phone():
-    print('名前を入力してください')
+    print('名前をl入力してください')
     name = input('名前：')
     print('電話番号を入力してください')
     phone_num = input('電話番号：')
@@ -25,15 +25,10 @@ def delete_phone():
     with open(filename, 'r', encoding = 'UTF-8') as f:
         for line in f:
             if name in line:
-                print(line + '削除しますか？')
-                del_name = int(input('YESは1を、NOは2を押してください:'))
-                if del_name == 1: #.pop(),delなどをうまく使用して削除させたいがうまく作動せず
-                     print(str(line.index(name)))
-                     line.pop(int(line.index(name)))
-                     print('削除されました')
-                    
-                    
-                
+                print(name + 'を削除しますか？')
+                del_name = int(input('YESは1を、NOは2をおしてください：'))
+                if del_name == 1:
+                    print(line.index(name))
                 
 
 #表示する
@@ -65,7 +60,6 @@ def clear_phone():
 def quit_phone():
     return print('終了しました')
     
-#phone_lists = [] 空の配列を用意
 
 while True:
     print('a/登録：add')
@@ -77,13 +71,13 @@ while True:
     choice = input('アルファベットで選択してください：')
 
     if choice == 'a':#addを選択した動作　テキストファイルに追記する　済（正規表現未）
-        #phone_lists.append(regist_phone())
         with open(filename, 'a', encoding = 'UTF-8') as f:
             for regist in regist_phone():
                 f.write(str(regist) + '\n') 
                 print('登録が完了しました' + '\n')
     elif choice == 'd':#deleteを選択した動作　テキストファイルから削除する　未
         delete_phone()
+        del_l = input('取得した番号を入力してください：')
         print('登録を削除しました' + '\n')
     elif choice == 'l':#listを選択した動作　　コンソールに一覧表示する 済
         open_phone()
