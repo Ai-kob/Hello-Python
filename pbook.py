@@ -1,10 +1,7 @@
 import re
 import os
-#テキストファイルを読み込む
+
 filename =  './number_list.txt'
-#with open(filename, 'r', encoding = 'UTf-8') as f:
- #   datas = f.read()
-  #  print(datas)
 print('-----------------------------------')
 
 #登録する(正規表現で桁数などの調整は未)
@@ -28,7 +25,7 @@ def delete_phone():
                 print(name + 'を削除しますか？')
                 del_name = int(input('YESは1を、NOは2をおしてください：'))
                 if del_name == 1:
-                    print(line.index(name))
+                    return name
                 
 
 #表示する
@@ -76,8 +73,8 @@ while True:
                 f.write(str(regist) + '\n') 
                 print('登録が完了しました' + '\n')
     elif choice == 'd':#deleteを選択した動作　テキストファイルから削除する　未
-        delete_phone()
-        del_l = input('取得した番号を入力してください：')
+        fd = delete_phone()
+        del fd
         print('登録を削除しました' + '\n')
     elif choice == 'l':#listを選択した動作　　コンソールに一覧表示する 済
         open_phone()
