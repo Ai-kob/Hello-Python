@@ -78,4 +78,5 @@ while True:
             else:
                 sg.popup('日付はみつかりません', title='Attentione!')
 
+window.close()
 
